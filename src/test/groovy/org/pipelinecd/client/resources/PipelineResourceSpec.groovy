@@ -16,7 +16,8 @@ class PipelineResourceSpec extends Specification {
                 .get(ClientResponse)
         expect:
         response.status == ClientResponse.Status.OK.statusCode
-        response.length == -1
+        response.hasEntity()
+        response.getEntity(String) == 'OK'
     }
 
     def setup() {

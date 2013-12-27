@@ -6,8 +6,6 @@ apply plugin: 'application'
 applicationName = 'pipe-client-api'
 description = 'pipe-client-api --the API for clients to communicate with the Pipeline'
 mainClassName = 'org.pipelinecd.client.Main'
-
-sourceCompatibility = 1.7
 version = '0.1.0'
 
 repositories {
@@ -18,6 +16,7 @@ dependencies {
     compile libraries.dropwizard
     compile libraries.groovy
     compile libraries.groovyJson
+    compile libraries.atmosphere
 
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
