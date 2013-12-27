@@ -1,0 +1,32 @@
+apply from: script('requireJavaVersion7')
+apply from: script('dependencies')
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+applicationName = 'pipe-client-api'
+description = 'pipe-client-api --the API for clients to communicate with the Pipeline'
+mainClassName = 'org.pipelinecd.client.Main'
+
+sourceCompatibility = 1.7
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile libraries.dropwizard
+    compile libraries.groovy
+    compile libraries.groovyJson
+
+    testCompile libraries.spock
+    testCompile libraries.dropwizardTesting
+}
+
+run {
+    args 'server'
+}
+
+File script(String name) {
+    project.file("gradle/${name}.gradle")
+}
