@@ -30,7 +30,7 @@ class PipelineResource {
 
     @GET
     @Path('{id}')
-    Pipeline getPipeline(@PathParam('id') String id) {
+    Pipeline get(@PathParam('id') String id) {
         return new Pipeline(UUID.fromString(id), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineStatus.RUNNING, 'compile')
     }
 }

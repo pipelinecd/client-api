@@ -3,6 +3,7 @@ package org.pipelinecd.client
 import com.yammer.dropwizard.config.Environment
 import org.pipelinecd.client.resources.IndexResource
 import org.pipelinecd.client.resources.PipelineResource
+import org.pipelinecd.client.resources.ProjectResource
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -33,5 +34,18 @@ class ClientApiServiceSpec extends Specification {
 
         then:
         1 * env.addResource(_ as PipelineResource)
+    }
+
+    def 'Serves the ProjectResource'() {
+        given:
+        def env = Mock(Environment)
+        def service = new ClientApiService()
+        def config = new ClientApiConfiguration()
+
+        when:
+        service.run(config, env)
+
+        then:
+        1 * env.addResource(_ as ProjectResource)
     }
 }

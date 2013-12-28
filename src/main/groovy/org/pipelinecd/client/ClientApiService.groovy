@@ -5,6 +5,7 @@ import com.yammer.dropwizard.config.Bootstrap
 import com.yammer.dropwizard.config.Environment
 import org.pipelinecd.client.resources.IndexResource
 import org.pipelinecd.client.resources.PipelineResource
+import org.pipelinecd.client.resources.ProjectResource
 
 class ClientApiService extends Service<ClientApiConfiguration> {
     @Override
@@ -16,5 +17,6 @@ class ClientApiService extends Service<ClientApiConfiguration> {
     void run(ClientApiConfiguration config, Environment env) throws Exception {
         env.addResource(new IndexResource())
         env.addResource(new PipelineResource())
+        env.addResource(new ProjectResource())
     }
 }
