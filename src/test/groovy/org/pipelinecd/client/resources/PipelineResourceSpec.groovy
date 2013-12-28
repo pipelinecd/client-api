@@ -2,12 +2,12 @@ package org.pipelinecd.client.resources
 
 import com.sun.jersey.api.client.Client
 import com.sun.jersey.api.client.ClientResponse
+import com.sun.jersey.api.client.GenericType
 import com.sun.jersey.api.client.WebResource
 import com.yammer.dropwizard.testing.ResourceTest
 import org.joda.time.DateTime
 import org.pipelinecd.client.api.Pipeline
 import org.pipelinecd.client.api.PipelineStatus
-import org.pipelinecd.client.api.Pipelines
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -24,7 +24,7 @@ class PipelineResourceSpec extends Specification {
         response.status == ClientResponse.Status.OK.statusCode
         response.length == -1
         response.hasEntity()
-        def pipelines = response.getEntity(Pipelines).pipeline
+        def pipelines = response.getEntity(new GenericType<Set<Pipeline>>() {})
         pipelines.size() == 4
         pipelines.contains(new Pipeline(UUID.fromString('7f9c0b40-1b8b-4e67-b7fa-e519e031b6c6'), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineStatus.RUNNING, 'compile'))
         pipelines.contains(new Pipeline(UUID.fromString('8b54e412-73da-4ddd-abc4-d46dda017a36'), new DateTime(2013, 12, 26, 12, 0, 0).toDate(), PipelineStatus.FAILED, 'component-test'))
@@ -50,7 +50,7 @@ class PipelineResourceSpec extends Specification {
 
         where:
         path        | id
-        '/pipeline' | UUID.randomUUID().toString()
+        '/pipeline' | '992acd98-6b67-4da7-b02e-56f2f8126681'
     }
 
     def setup() {

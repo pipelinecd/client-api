@@ -6,6 +6,7 @@ ext {
 versions += [
         groovy: '2.2.1',
         dropwizard: '0.6.2',
+        jersey: '1.18',
 ]
 
 libraries += [
@@ -20,7 +21,7 @@ libraries += [
 ]
 
 libraries.dropwizard = ["com.yammer.dropwizard:dropwizard-core:${versions.dropwizard}",
-        'com.sun.jersey:jersey-client:1.18',  // org.glassfish.jersey.core:jersey-client:2.5
+        "com.sun.jersey:jersey-client:${versions.jersey}",  // org.glassfish.jersey.core:jersey-client:2.5
 ]
 
 libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
@@ -44,6 +45,10 @@ allprojects {
             // Change old groupId of asm to new groupId, for correct dependency handling
             if (req.group == 'asm') {
                 details.useTarget group: 'org.ow2.asm', name: req.name, version: req.version
+            }
+            // Change all jersey version, to the given version
+            if (req.group == 'com.sun.jersey') {
+                details.useTarget group: req.group, name: req.name, version: versions.jersey
             }
         }
     }

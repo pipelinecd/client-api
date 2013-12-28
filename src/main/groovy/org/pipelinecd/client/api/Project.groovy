@@ -1,8 +1,14 @@
 package org.pipelinecd.client.api
 
-import groovy.transform.Immutable
+import groovy.transform.Canonical
 
-@Immutable
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAccessorType
+import javax.xml.bind.annotation.XmlRootElement
+
+@Canonical
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 class Project {
     UUID id
     Date creationTime
