@@ -18,6 +18,7 @@ dependencies {
     compile libraries.dropwizard
     compile libraries.groovy
     compile libraries.groovyJson
+    compile libraries.jodaTime
 
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
