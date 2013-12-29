@@ -6,8 +6,8 @@ import com.yammer.dropwizard.config.Environment
 import com.yammer.dropwizard.config.FilterBuilder
 import org.eclipse.jetty.servlets.CrossOriginFilter
 import org.pipelinecd.client.resources.IndexResource
-import org.pipelinecd.client.resources.PipelineResource
-import org.pipelinecd.client.resources.ProjectResource
+import org.pipelinecd.client.resources.PipelinesResource
+import org.pipelinecd.client.resources.RunsResource
 
 import static com.yammer.dropwizard.config.HttpConfiguration.ConnectorType.NONBLOCKING
 
@@ -23,8 +23,8 @@ class ClientApiService extends Service<ClientApiConfiguration> {
         addCrossOriginSupport(env)
 
         env.addResource(new IndexResource())
-        env.addResource(new PipelineResource())
-        env.addResource(new ProjectResource())
+        env.addResource(new RunsResource())
+        env.addResource(new PipelinesResource())
     }
 
     private void addCrossOriginSupport(Environment env) {

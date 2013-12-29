@@ -4,8 +4,8 @@ import com.yammer.dropwizard.config.Environment
 import com.yammer.dropwizard.config.FilterBuilder
 import org.eclipse.jetty.servlets.CrossOriginFilter
 import org.pipelinecd.client.resources.IndexResource
-import org.pipelinecd.client.resources.PipelineResource
-import org.pipelinecd.client.resources.ProjectResource
+import org.pipelinecd.client.resources.RunsResource
+import org.pipelinecd.client.resources.PipelinesResource
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -42,7 +42,7 @@ class ClientApiServiceSpec extends Specification {
 
         then:
         _ * env.addFilter(_, _) >> filterBuilder
-        1 * env.addResource(_ as PipelineResource)
+        1 * env.addResource(_ as RunsResource)
     }
 
     def 'Serves the ProjectResource'() {
@@ -57,7 +57,7 @@ class ClientApiServiceSpec extends Specification {
 
         then:
         _ * env.addFilter(_, _) >> filterBuilder
-        1 * env.addResource(_ as ProjectResource)
+        1 * env.addResource(_ as PipelinesResource)
     }
 
     def 'HTTP connection type is set to non-blocking'() {
@@ -75,7 +75,7 @@ class ClientApiServiceSpec extends Specification {
         config.httpConfiguration.connectorType == NONBLOCKING
     }
 
-    def 'Cross-Origin resource sharing is configured on /'() {
+    def 'Cross-Origin resource sharing is configured on /*'() {
         given:
         def env = Mock(Environment)
         def filterBuilder = Mock(FilterBuilder)

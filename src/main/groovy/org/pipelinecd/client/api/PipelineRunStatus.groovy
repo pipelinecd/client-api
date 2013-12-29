@@ -1,7 +1,7 @@
 package org.pipelinecd.client.api
 
 
-enum PipelineStatus {
+enum PipelineRunStatus {
     RUNNING,
     FAILED,
     SUCCESS,

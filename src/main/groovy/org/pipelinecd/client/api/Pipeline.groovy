@@ -12,6 +12,4 @@ import javax.xml.bind.annotation.XmlRootElement
 class Pipeline {
     UUID id
     Date creationTime
-    PipelineStatus status
-    String currentStage
 }

@@ -6,7 +6,7 @@ apply plugin: 'application'
 applicationName = 'pipe-client-api'
 description = 'pipe-client-api --the API for clients to communicate with the Pipeline'
 mainClassName = 'org.pipelinecd.client.Main'
-version = '0.1.0'
+version = '0.2.0'
 
 repositories {
     mavenCentral()
