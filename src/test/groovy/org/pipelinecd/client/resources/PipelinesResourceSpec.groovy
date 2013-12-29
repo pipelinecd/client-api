@@ -8,19 +8,19 @@ import com.yammer.dropwizard.testing.ResourceTest
 import org.pipelinecd.client.api.Pipeline
 import org.pipelinecd.client.api.PipelineRun
 import org.pipelinecd.client.core.PipelineRepository
-import org.pipelinecd.client.core.RunsRepository
+import org.pipelinecd.client.core.RunRepository
 import spock.lang.Specification
 import spock.lang.Unroll
 
 import static org.pipelinecd.client.core.PipelineRepository.*
-import static org.pipelinecd.client.core.RunsRepository.*
+import static org.pipelinecd.client.core.RunRepository.*
 
 @Unroll
 class PipelinesResourceSpec extends Specification {
 
     TestResource resource = new TestResource()
     PipelineRepository pipeRepo = new PipelineRepository()
-    RunsRepository runRepo = new RunsRepository()
+    RunRepository runRepo = new RunRepository()
 
     def 'GET #path results in 200 OK and mocked collection of Pipeline objects'() {
         given:

@@ -3,7 +3,7 @@ package org.pipelinecd.client.resources
 import com.google.common.collect.Sets
 import groovy.util.logging.Slf4j
 import org.pipelinecd.client.api.PipelineRun
-import org.pipelinecd.client.core.RunsRepository
+import org.pipelinecd.client.core.RunRepository
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path
@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response
 @Slf4j
 class PipelineRunsResource {
     String pipelineId
-    RunsRepository repo = new RunsRepository()
+    RunRepository repo = new RunRepository()
 
     PipelineRunsResource(String pipelineId) {
         this.pipelineId = pipelineId

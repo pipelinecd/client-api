@@ -9,10 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement
 @Canonical
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-class PipelineRun {
+class Stage {
     UUID id
-    Date creationTime
-    PipelineRunStatus status
-    String currentStage
-    Set<Stage> stages
+    String name
+    StageStatus status
 }
