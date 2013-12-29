@@ -86,7 +86,7 @@ class ClientApiServiceSpec extends Specification {
         service.run(config, env)
 
         then:
-        1 * env.addFilter(CrossOriginFilter, '/') >> filterBuilder
+        1 * env.addFilter(CrossOriginFilter, '/*') >> filterBuilder
         1 * filterBuilder.setInitParam(ALLOWED_ORIGINS_PARAM, '*')
     }
 }

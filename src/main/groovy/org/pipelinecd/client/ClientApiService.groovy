@@ -28,7 +28,7 @@ class ClientApiService extends Service<ClientApiConfiguration> {
     }
 
     private void addCrossOriginSupport(Environment env) {
-        FilterBuilder filterConfig = env.addFilter(CrossOriginFilter, "/");
+        FilterBuilder filterConfig = env.addFilter(CrossOriginFilter, "/*");
         filterConfig.setInitParam(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "*");
     }
 
