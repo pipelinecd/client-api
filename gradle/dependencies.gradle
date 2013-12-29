@@ -7,6 +7,7 @@ versions += [
         groovy: '2.2.1',
         dropwizard: '0.6.2',
         jersey: '1.18',
+        jetty: '8.1.10.v20130312',
 ]
 
 libraries += [
@@ -21,6 +22,7 @@ libraries += [
 ]
 
 libraries.dropwizard = ["com.yammer.dropwizard:dropwizard-core:${versions.dropwizard}",
+        "org.eclipse.jetty:jetty-servlets:${versions.jetty}", // Required for CrossOriginFilter.class
         "com.sun.jersey:jersey-client:${versions.jersey}",  // org.glassfish.jersey.core:jersey-client:2.5
 ]
 

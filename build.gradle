@@ -26,6 +26,13 @@ run {
     args 'server'
 }
 
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Pipeline Client API'
+        attributes 'Implementation-Version': version
+    }
+}
+
 File script(String name) {
     project.file("gradle/${name}.gradle")
 }
