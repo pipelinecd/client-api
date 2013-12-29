@@ -4,8 +4,8 @@ import com.yammer.dropwizard.config.Environment
 import com.yammer.dropwizard.config.FilterBuilder
 import org.eclipse.jetty.servlets.CrossOriginFilter
 import org.pipelinecd.client.resources.IndexResource
-import org.pipelinecd.client.resources.RunsResource
 import org.pipelinecd.client.resources.PipelinesResource
+import org.pipelinecd.client.resources.RunsResource
 import spock.lang.Specification
 import spock.lang.Unroll
 

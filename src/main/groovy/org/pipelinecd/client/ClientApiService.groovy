@@ -23,8 +23,8 @@ class ClientApiService extends Service<ClientApiConfiguration> {
         addCrossOriginSupport(env)
 
         env.addResource(new IndexResource())
-        env.addResource(new RunsResource())
         env.addResource(new PipelinesResource())
+        env.addResource(new RunsResource())
     }
 
     private void addCrossOriginSupport(Environment env) {

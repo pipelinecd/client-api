@@ -13,11 +13,16 @@ import javax.ws.rs.core.GenericEntity
 import javax.ws.rs.core.Response
 
 @Slf4j
-@Path('runs')
-class RunsResource {
+class PipelineRunsResource {
+    String pipelineId
+
+    PipelineRunsResource(String pipelineId) {
+        this.pipelineId = pipelineId
+    }
 
     @GET
     Response get() {
+        // TODO: Get pipeline specific runs
         Set<PipelineRun> runs = [
                 new PipelineRun(UUID.fromString('7f9c0b40-1b8b-4e67-b7fa-e519e031b6c6'), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineRunStatus.RUNNING, 'compile'),
                 new PipelineRun(UUID.fromString('8b54e412-73da-4ddd-abc4-d46dda017a36'), new DateTime(2013, 12, 26, 12, 0, 0).toDate(), PipelineRunStatus.FAILED, 'component-test'),
@@ -31,6 +36,7 @@ class RunsResource {
     @GET
     @Path('{id}')
     PipelineRun get(@PathParam('id') String id) {
+        // TODO: Get pipeline specific runs
         return new PipelineRun(UUID.fromString(id), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineRunStatus.RUNNING, 'compile')
     }
 }

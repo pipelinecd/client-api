@@ -6,13 +6,11 @@ import com.sun.jersey.api.client.GenericType
 import com.sun.jersey.api.client.WebResource
 import com.yammer.dropwizard.testing.ResourceTest
 import org.joda.time.DateTime
-import org.junit.Ignore
 import org.pipelinecd.client.api.PipelineRun
 import org.pipelinecd.client.api.PipelineRunStatus
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@Ignore('Remove?')
 @Unroll
 class RunsResourceSpec extends Specification {
 
@@ -34,24 +32,24 @@ class RunsResourceSpec extends Specification {
         pipelines.contains(new PipelineRun(UUID.fromString('296948e4-b731-46c3-82c2-a318b72c39cc'), new DateTime(2013, 12, 28, 14, 30, 30).toDate(), PipelineRunStatus.NEED_ACTION, 'deploy to prod'))
 
         where:
-        path          | _
+        path     | _
         '/runs'  | _
         '/runs/' | _
     }
 
-    def 'GET #path/#id results in 200 OK and PipelineRun object with specific id'() {
+    def 'GET #path/#pipelineId results in 200 OK and PipelineRun object with specific id'() {
         given:
-        def response = request("${path}/${id}")
+        def response = request("${path}/${pipelineId}")
                 .get(ClientResponse)
         expect:
         response.status == ClientResponse.Status.OK.statusCode
         response.length == -1
         response.hasEntity()
         def pipeline = response.getEntity(PipelineRun)
-        pipeline == new PipelineRun(UUID.fromString(id), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineRunStatus.RUNNING, 'compile')
+        pipeline == new PipelineRun(UUID.fromString(pipelineId), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), PipelineRunStatus.RUNNING, 'compile')
 
         where:
-        path         | pipelineId
+        path    | pipelineId
         '/runs' | '992acd98-6b67-4da7-b02e-56f2f8126681'
     }
 

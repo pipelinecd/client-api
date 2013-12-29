@@ -27,10 +27,10 @@ class PipelinesResourceSpec extends Specification {
         response.hasEntity()
         def projects = response.getEntity(new GenericType<Set<Pipeline>>() {})
         projects.size() == 4
-        projects.contains(new Pipeline(UUID.fromString('7f9c0b40-1b8b-4e67-b7fa-e519e031b6c6'), new DateTime(2013, 12, 25, 11, 45, 40).toDate()))
-        projects.contains(new Pipeline(UUID.fromString('8b54e412-73da-4ddd-abc4-d46dda017a36'), new DateTime(2013, 12, 26, 12, 0, 0).toDate()))
-        projects.contains(new Pipeline(UUID.fromString('2fde8a18-dd2c-4503-9dcb-dd3308d83437'), new DateTime(2013, 12, 27, 13, 15, 10).toDate()))
-        projects.contains(new Pipeline(UUID.fromString('296948e4-b731-46c3-82c2-a318b72c39cc'), new DateTime(2013, 12, 28, 14, 30, 30).toDate()))
+        projects.contains(new Pipeline(UUID.fromString('7f9c0b40-1b8b-4e67-b7fa-e519e031b6c6'), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), 'projectX'))
+        projects.contains(new Pipeline(UUID.fromString('8b54e412-73da-4ddd-abc4-d46dda017a36'), new DateTime(2013, 12, 26, 12, 0, 0).toDate(), 'projectL'))
+        projects.contains(new Pipeline(UUID.fromString('2fde8a18-dd2c-4503-9dcb-dd3308d83437'), new DateTime(2013, 12, 27, 13, 15, 10).toDate(), 'projectZ'))
+        projects.contains(new Pipeline(UUID.fromString('296948e4-b731-46c3-82c2-a318b72c39cc'), new DateTime(2013, 12, 28, 14, 30, 30).toDate(), 'projectY'))
 
         where:
         path          | _
@@ -47,7 +47,7 @@ class PipelinesResourceSpec extends Specification {
         response.length == -1
         response.hasEntity()
         def project = response.getEntity(Pipeline)
-        project == new Pipeline(UUID.fromString(pipelineId), new DateTime(2013, 12, 25, 11, 45, 40).toDate())
+        project == new Pipeline(UUID.fromString(pipelineId), new DateTime(2013, 12, 25, 11, 45, 40).toDate(), 'projectX')
 
         where:
         path         | pipelineId
