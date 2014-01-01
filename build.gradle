@@ -17,6 +17,7 @@ dependencies {
     compile libraries.groovy
     compile libraries.groovyJson
     compile libraries.jodaTime
+    compile libraries.hazelCast
 
     testCompile libraries.spock
     testCompile libraries.dropwizardTesting
